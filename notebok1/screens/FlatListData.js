@@ -6,20 +6,9 @@ var FlatListData=[{
 {
     "key":"2",
     "name":"cream",
+    "description":"dsfsd",
+    "date":"monday 22/20/10"
 },
-{
-    "key":"3",
-    "name":"cream",
-   
-},
-{
-    "key":"4",
-    "name":"cream", 
-},
-{
-    "key":"5",
-    "name":"cream",
-
-}];
+];
 
 module.exports=FlatListData;

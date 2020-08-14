@@ -19,6 +19,8 @@ class Flatimages extends React.Component{
 
             <View style={{flexDirection:'column',flex:1}}>
       <Text style={styles.flatlistitems}>{this.props.item.name}</Text>
+      <Text style={styles.flatlistitems}>{this.props.item.description}</Text>
+      <Text style={styles.flatlistitems}>{this.props.item.date}</Text>
 
             </View>
         </View>  
@@ -39,20 +41,6 @@ const styles=StyleSheet.create({
       fontSize:16
   }
 })
-
-// const styles = StyleSheet.create({
-//   container: {
-//    flex: 1,
-   
-//   },
-
-//   item: {
-//     marginTop:24,
-//          padding:20,
-//          backgroundColor:'#59cbbd',
-//        fontSize:24
-//   },
-// });
 
 export default class Details extends React.Component {
   constructor(props){
@@ -102,4 +90,3 @@ export default class Details extends React.Component {
     );
   }
 }
-  

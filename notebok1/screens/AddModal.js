@@ -14,7 +14,9 @@ export default class AddModal extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            newBook:'',
+            newBookname:'',
+            newDescription:'',
+            newDate:''
         };
     }
 
@@ -33,7 +35,7 @@ export default class AddModal extends React.Component{
             borderRadius:Platform.OS === 'ios' ? 30:0,
             shadowRadius:20,
             width:screen.width-80,
-            height:280}}
+            height:350}}
             positin='center'
             backdrop={true}
             onClosed={() =>{
@@ -44,7 +46,7 @@ export default class AddModal extends React.Component{
                 textAlign:'center',
                 marginTop:40,
                 fontSize:25
-                }}> TextBook Name</Text>
+                }}> Add New Data</Text>
 
                 <TextInput style={{height:40,
                 borderBottomColor:'gray',
@@ -53,11 +55,37 @@ export default class AddModal extends React.Component{
                 marginRight:30,
                 marginBottom:10,
                 borderBottomWidth:1}}
-                placeholder="Enter the new name of notebook"
+                placeholder="Enter the name"
 
-                onChangeText={(text)=>this.setState({newBook:text})}
+                onChangeText={(text)=>this.setState({newBookname:text})}
                
-                value={this.state.newBook}/>
+                value={this.state.newBookname}/>
+
+                <TextInput style={{height:40,
+                borderBottomColor:'gray',
+                fontSize:17,
+                marginLeft:30,
+                marginRight:30,
+                marginBottom:10,
+                borderBottomWidth:1}}
+                placeholder="Enter the description"
+
+                onChangeText={(text)=>this.setState({newDescription:text})}
+               
+                value={this.state.newDescription}/>
+
+                <TextInput style={{height:40,
+                borderBottomColor:'gray',
+                fontSize:17,
+                marginLeft:30,
+                marginRight:30,
+                marginBottom:10,
+                borderBottomWidth:1}}
+                placeholder="Enter the date"
+
+                onChangeText={(text)=>this.setState({newDate:text})}
+               
+                value={this.state.newDate}/>
                 
             
             <TouchableOpacity style={{ 
@@ -66,24 +94,26 @@ export default class AddModal extends React.Component{
                             marginTop:30,
                             marginLeft:30,
                             marginRight:30,
-                        justifyContent:'center',
+                         justifyContent:'center',
                          alignItems:'center'}}
                          onPress={()=>{
-                             if(this.state.newBook.length == 0){
+                             if(this.state.newBookname.length == 0){
                                  alert("you must enter new book name");
                                  return;
                              }
                              const newKey = this.generateKey(24);
                              const newBook={
                                  key: newKey,
-                                 name:this.state.newBook,
+                                 name:this.state.newBookname,
+                                 description:this.state.newDescription,
+                                 date:this.state.newDate
                              };
                              FlatListData.push(newBook);
                              this.props.parentFlatList.refreshFlatList(newKey);
                             this.refs.myModal.close();
                          }} >
   
-      <Text style={{color:'#fff',fontWeight:'bold',fontSize:20}}>Save</Text>
+      <Text style={{color:'#fff',fontWeight:'bold',fontSize:20}}>ADD</Text>
     </TouchableOpacity>
             
             </Modal>

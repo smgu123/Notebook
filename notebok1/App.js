@@ -17,21 +17,12 @@ import Details from './screens/Details';
 const Stack = createStackNavigator();
 
 
-
-// const Login=()=> {
-//   return (
-//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-//       <Text>Home Screen</Text>
-//     </View>
-//   );
-// }
-
 const App= () => {
   return(
 
    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={Login} />
+      <Stack.Navigator initialRouteName="Notebook">
+        <Stack.Screen name="Notebook" component={Login} />
         <Stack.Screen name="Details" component={Details} />
       </Stack.Navigator>
      </NavigationContainer>
