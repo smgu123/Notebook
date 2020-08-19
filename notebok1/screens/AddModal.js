@@ -7,6 +7,7 @@ import Details from './Details';
 import Modal from 'react-native-modalbox';
 import { TextInput } from 'react-native-gesture-handler';
 import FlatListData from './FlatListData';
+import DatePicker from 'react-native-date-picker'
 
 var screen = Dimensions.get('window');
 
@@ -16,8 +17,9 @@ export default class AddModal extends React.Component{
         this.state={
             newBookname:'',
             newDescription:'',
-            newDate:''
+            date:new Date()
         };
+       
     }
 
     showAddModal=()=>{
@@ -28,70 +30,30 @@ export default class AddModal extends React.Component{
     }
 
     render(){
+       
         return(
             <Modal 
             ref={"myModal"}
             style ={{justifyContent:'center',
-            borderRadius:Platform.OS === 'ios' ? 30:0,
+            borderRadius:Platform.OS === 'ios' ? 30:10,
             shadowRadius:20,
             width:screen.width-80,
-            height:350}}
-            positin='center'
-            backdrop={true}
+            height:500}}
+            position='center'
             onClosed={() =>{
                 alert("Modal closed");
             }}>
-                <Text style={{fontSize:16,
+                {/* <Text style={{fontSize:16,
                 fontWeight:'bold',
                 textAlign:'center',
-                marginTop:40,
+                marginTop:10,
                 fontSize:25
-                }}> Add New Data</Text>
+                }}> Add New Data</Text> */}
 
-                <TextInput style={{height:40,
-                borderBottomColor:'gray',
-                fontSize:17,
-                marginLeft:30,
-                marginRight:30,
-                marginBottom:10,
-                borderBottomWidth:1}}
-                placeholder="Enter the name"
-
-                onChangeText={(text)=>this.setState({newBookname:text})}
-               
-                value={this.state.newBookname}/>
-
-                <TextInput style={{height:40,
-                borderBottomColor:'gray',
-                fontSize:17,
-                marginLeft:30,
-                marginRight:30,
-                marginBottom:10,
-                borderBottomWidth:1}}
-                placeholder="Enter the description"
-
-                onChangeText={(text)=>this.setState({newDescription:text})}
-               
-                value={this.state.newDescription}/>
-
-                <TextInput style={{height:40,
-                borderBottomColor:'gray',
-                fontSize:17,
-                marginLeft:30,
-                marginRight:30,
-                marginBottom:10,
-                borderBottomWidth:1}}
-                placeholder="Enter the date"
-
-                onChangeText={(text)=>this.setState({newDate:text})}
-               
-                value={this.state.newDate}/>
-                
-            
-            <TouchableOpacity style={{ 
+                    <TouchableOpacity style={{ 
                             padding:20,
                             backgroundColor:'#59cbbd',
-                            marginTop:30,
+                            marginTop:5,
                             marginLeft:30,
                             marginRight:30,
                          justifyContent:'center',
@@ -106,16 +68,54 @@ export default class AddModal extends React.Component{
                                  key: newKey,
                                  name:this.state.newBookname,
                                  description:this.state.newDescription,
-                                 date:this.state.newDate
+                                 date:this.state.date.toString()
                              };
                              FlatListData.push(newBook);
                              this.props.parentFlatList.refreshFlatList(newKey);
                             this.refs.myModal.close();
-                         }} >
-  
-      <Text style={{color:'#fff',fontWeight:'bold',fontSize:20}}>ADD</Text>
-    </TouchableOpacity>
+                         }} >       
+          
+                <Text style={{color:'#fff',fontWeight:'bold',fontSize:20}}>ADD NEW DETAILS</Text>
+                </TouchableOpacity>
+
+                   
+                 <TextInput style={{height:40,
+                borderBottomColor:'gray',
+                fontSize:17,
+                marginLeft:30,
+                marginRight:30,
+                marginBottom:10,
+                borderBottomWidth:1}}
+                placeholder="Enter the name"
+
+                onChangeText={(text)=>this.setState({newBookname:text})}
+               
+                value={this.state.newBookname}/>
+ 
+                <TextInput style={{height:40,
+                borderBottomColor:'gray',
+                fontSize:17,
+                marginLeft:30,
+                marginRight:30,
+                marginBottom:10,
+                borderBottomWidth:1}}
+                placeholder="Enter the description"
+
+                onChangeText={(text)=>this.setState({newDescription:text})}
+               
+                value={this.state.newDescription}/>  
             
+          
+
+            <DatePicker
+                date={this.state.date}
+                mode="date"
+                onDateChange={(date) => {this.setState({date: date})}}
+            /> 
+
+
+
+    
             </Modal>
             
         );

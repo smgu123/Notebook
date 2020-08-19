@@ -10,15 +10,22 @@ import {
 import { FlatList } from 'react-native-gesture-handler';
 import AddModal from './AddModal';
 import FlatListData from './FlatListData';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 class Flatimages extends React.Component{
   render(){
       return(
           <View>
               <View style={{flex:1,backgroundColor:"#59cbbd",flexDirection:'row'}}>
-
+              <Icon 
+               name="document-text" 
+                                color="black"
+                                size={60}
+                                style={{padding:8,marginTop:30}}
+                                >{this.props.item.icon}</Icon>
             <View style={{flexDirection:'column',flex:1}}>
       <Text style={styles.flatlistitems}>{this.props.item.name}</Text>
+     
       <Text style={styles.flatlistitems}>{this.props.item.description}</Text>
       <Text style={styles.flatlistitems}>{this.props.item.date}</Text>
 
@@ -36,13 +43,15 @@ class Flatimages extends React.Component{
 
 const styles=StyleSheet.create({
   flatlistitems:{
-      color:'white',
-      padding:10,
-      fontSize:16
+      color:'black',
+      padding:8,
+      fontSize:18,
+      marginLeft:10
   }
 })
 
 export default class Details extends React.Component {
+  
   constructor(props){
     super(props);
 
@@ -58,7 +67,6 @@ export default class Details extends React.Component {
         deletedRowKey:activeKey
       };
    });
-  //  this.refs.flatList.scrollToEnd();
  }
 
   onPressAdd(){
@@ -71,7 +79,11 @@ export default class Details extends React.Component {
       <View style={styles.container}>
          <View style={{backgroundColor:'#199187',height:64,flexDirection:'row',justifyContent:'flex-end'}} >
         <TouchableHighlight style={{marginRight:10}}underlayColor='tomato' onPress={this.onPressAdd}>
-          <Image style={{width:55,height:60}} source={{uri:'https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/add.png'}}/>
+        <Icon 
+               name="add-circle-outline" 
+                                color="black"
+                                size={60}
+                                />
         </TouchableHighlight>
       </View>
   

@@ -8,9 +8,14 @@ import {
 } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
+const ScreenContainer = ({ children }) => (
+  <View style={styles.container}>{children}</View>
+);
 
 const Login=({navigation})=> {
+  
   return (
+    <ScreenContainer>
   <View style={styles.container}>
     <View style={styles.logForm}>
       <Text style={styles.header}>Login </Text>
@@ -20,9 +25,10 @@ const Login=({navigation})=> {
      onPress={()=>{navigation.navigate('Details')}}>
       <Text style={styles.btn}>LOGIN</Text>
     </TouchableOpacity>
-     
-    </View></View>
+    
+    </View></View></ScreenContainer>
   );
+  
 }
 
 const styles= StyleSheet.create({
@@ -37,12 +43,12 @@ const styles= StyleSheet.create({
     alignSelf:'stretch',
   },
   header:{
-    fontSize:24,
+    fontSize:40,
     paddingBottom:10,
+    alignItems:'center',
+    justifyContent:'center',
     color:'#fff',
-    marginBottom:40,
-    borderBottomColor:'#199187',
-    borderBottomWidth:1
+    marginBottom:40
   },
   l1:{
     fontSize:18,
@@ -65,6 +71,7 @@ const styles= StyleSheet.create({
   btn:{
     color:'#fff',
     fontWeight:'bold',
+    fontSize:20
   
   }
 })
