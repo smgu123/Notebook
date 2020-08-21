@@ -79,7 +79,7 @@ import ImagePicker from 'react-native-image-crop-picker';
           />
         </View>
             <TouchableOpacity style={styles.button} 
-              onPress={()=>{this.props.navigation.navigate('Fetch')}}>
+              onPress={()=>{this.props.navigation.navigate('Details')}}>
                <Text style={styles.btn}>Done</Text>
              </TouchableOpacity>
         </View>
@@ -122,7 +122,8 @@ import ImagePicker from 'react-native-image-crop-picker';
     backgroundColor:'#36485f',
     marginTop:30,
     justifyContent:'center',
-    alignItems:'center'
+    alignItems:'center',
+    borderRadius:20
   },
   btn:{
     color:'#fff',

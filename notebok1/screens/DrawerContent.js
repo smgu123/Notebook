@@ -62,6 +62,18 @@ export default function DrawerContent(props) {
                             label="Profile"
                             onPress={() => {props.navigation.navigate('Profile')}}
                         />
+
+                        <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="globe-outline" 
+                                color={color}
+                                size={size}
+                                />
+                            )}
+                            label="Networking"
+                            onPress={() => {props.navigation.navigate('Networking')}}
+                        />
                      
                     </Drawer.Section>
             </View>

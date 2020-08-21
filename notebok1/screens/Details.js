@@ -11,6 +11,7 @@ import { FlatList } from 'react-native-gesture-handler';
 import AddModal from './AddModal';
 import FlatListData from './FlatListData';
 import Icon from 'react-native-vector-icons/Ionicons';
+import PushNotification from "react-native-push-notification";
 
 class Flatimages extends React.Component{
   render(){
@@ -55,11 +56,44 @@ export default class Details extends React.Component {
   constructor(props){
     super(props);
 
+    PushNotification.configure({
+
+      onRegister: function (token) {
+        console.log("TOKEN:", token);
+      },
+     
+      onNotification: function (notification) {
+        console.log("NOTIFICATION:", notification);
+            
+      },
+     
+      onAction: function (notification) {
+        console.log("ACTION:", notification.action);
+        console.log("NOTIFICATION:", notification);
+     
+      },
+     
+      onRegistrationError: function(err) {
+        console.error(err.message, err);
+      },
+     
+      permissions: {
+        alert: true,
+        badge: true,
+        sound: true,
+      },
+     
+      popInitialNotification: true,
+     
+      requestPermissions: true,
+    });   
+
     this.state = ({
       deletedRowKey: null,
     });
     this.onPressAdd = this.onPressAdd.bind(this);
   }
+
  refreshFlatList = (activeKey)=>{ 
 
    this.setState((prevState) =>{
@@ -70,15 +104,19 @@ export default class Details extends React.Component {
  }
 
   onPressAdd(){
-   
     this.refs.addModal.showAddModal();
+    PushNotification.localNotification({
+      title: "Notification" , // (optional)
+      message: "Add New Details", // (required)
+      
+    });
   }
 
     render(){
     return (
       <View style={styles.container}>
-         <View style={{backgroundColor:'#199187',height:64,flexDirection:'row',justifyContent:'flex-end'}} >
-        <TouchableHighlight style={{marginRight:10}}underlayColor='tomato' onPress={this.onPressAdd}>
+         <View style={{flexDirection:'row',justifyContent:'center',justifyContent:'center'}} >
+        <TouchableHighlight style={{marginRight:10}}underlayColor='tomato' onPress={()=>this.onPressAdd()}>
         <Icon 
                name="add-circle-outline" 
                                 color="black"

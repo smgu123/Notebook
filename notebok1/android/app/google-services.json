@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "13384331951",
+    "firebase_url": "https://notification-e2096.firebaseio.com",
+    "project_id": "notification-e2096",
+    "storage_bucket": "notification-e2096.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13384331951:android:328bc33ab2b5fa32565a5a",
+        "android_client_info": {
+          "package_name": "com.notebok1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "13384331951-lsbool019tn4lb3mmdp57p74039l1nn1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy7e_MrU75aw9LEzMDDKtTeedal7v7f7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "13384331951-lsbool019tn4lb3mmdp57p74039l1nn1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

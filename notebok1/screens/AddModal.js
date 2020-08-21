@@ -72,6 +72,8 @@ export default class AddModal extends React.Component{
                              };
                              FlatListData.push(newBook);
                              this.props.parentFlatList.refreshFlatList(newKey);
+                            //  console.log(this.props.name);
+                            //  console.log(this.props.item);
                             this.refs.myModal.close();
                          }} >       
           
@@ -112,9 +114,7 @@ export default class AddModal extends React.Component{
                 mode="date"
                 onDateChange={(date) => {this.setState({date: date})}}
             /> 
-
-
-
+  
     
             </Modal>
             

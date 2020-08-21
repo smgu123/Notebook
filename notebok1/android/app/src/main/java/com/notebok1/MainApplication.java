@@ -1,5 +1,6 @@
 package com.notebok1;
 
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;  // <--- Import Package 
 import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
