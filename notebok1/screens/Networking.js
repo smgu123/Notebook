@@ -62,7 +62,7 @@
 
 
 import React, { Component } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, Text, View, NativeModules,TouchableOpacity} from 'react-native';
 import axios from 'react-native-axios';
 
 export default class App extends Component {
@@ -93,7 +93,6 @@ export default class App extends Component {
   
         this.setState({ data: response.data.movies });
    
-        // .catch((error) => console.error(error))
         this.setState({ isLoading: false });
       }
       catch(error){
@@ -104,18 +103,38 @@ export default class App extends Component {
   }
 
   render() {
+    var ToastExample = NativeModules.ToastExample;
+
     const { data } = this.state;
 
     return (
-      <View style={{ flex: 1, padding: 24 }}>
+      <View style={{ flex: 1, padding: 24,backgroundColor:'#122829' }}>
        
           <FlatList
             data={data}
             keyExtractor={({ id }, index) => id}
             renderItem={({ item }) => (
-              <Text>{item.title}, {item.releaseYear}</Text>
+              <Text style={{fontWeight:"bold",fontSize:20,color:"white"}}>{item.title}, {item.releaseYear}</Text>
             )}
           />
+
+            <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
+
+              <TouchableOpacity onPress={() => {
+                ToastExample.show('hello from native android', ToastExample.SHORT);
+              }}
+            style={{alignSelf:'stretch',
+            padding:10,
+            backgroundColor:'#8c8888',
+            margin:30,
+            justifyContent:'center',
+            alignItems:'center',
+            borderRadius:8
+            }}>
+            <Text style={{color:'black',fontSize:30}}>press</Text>
+          </TouchableOpacity>
+        
+      </View>
        
       </View>
     );
