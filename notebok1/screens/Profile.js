@@ -7,19 +7,26 @@ import {
   TextInput,
   StyleSheet,
   Image,
-} from 'react-native';
+  } from 'react-native';
 
-import {useTheme} from 'react-native-paper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import ImagePicker from 'react-native-image-crop-picker';
- 
+import {Picker} from '@react-native-community/picker';
+import { Dimensions } from "react-native";
+
+var width = Dimensions.get('window').width; 
 
   class Profile extends React.Component {
       constructor(props){
           super(props)
           this.state={
-              image:""
+              image:"",
+              selectedLabel:''
           }
+      }
+
+      showPicker = (value) =>{
+            this.setState({selectedLabel:value});
       }
 
       choosePhotoFromLibrary = () => {
@@ -59,15 +66,19 @@ import ImagePicker from 'react-native-image-crop-picker';
             }
           />
         </View>
-        <View style={styles.action}>
-          <FontAwesome name="user-o" size={20} />
-          <TextInput
-            placeholder="Gender"
-            autoCorrect={false}
-            style={
-              styles.textInput
-            }
-          /></View>
+        <View style={styles.picker}>
+            <Text >
+            <Picker selectedValue={this.state.selectedLabel}
+              style={{height: 100, width: "100%"}}
+             onValueChange={(itemValue, itemIndex) =>
+              this.setState({selectedLabel: itemValue})}>
+
+              <Picker.Item label = "Gender" value="gender" ></Picker.Item>
+              <Picker.Item label = "Male" value="male"></Picker.Item>
+              <Picker.Item label = "Female" value="female"></Picker.Item>
+            </Picker> 
+            </Text>
+            </View>         
 
              <View style={styles.action}>
           <FontAwesome name="user-o" size={20} />
@@ -99,7 +110,9 @@ import ImagePicker from 'react-native-image-crop-picker';
     borderBottomWidth: 1,
     borderBottomColor: '#f2f2f2',
     paddingBottom: 5,
-    padding:20
+    padding:20,
+    width:width,
+    paddingLeft:30
   },
 
   textInput: {
@@ -130,6 +143,16 @@ import ImagePicker from 'react-native-image-crop-picker';
     fontWeight:'bold',
     fontSize:20
   
+  },
+  picker:{
+    marginTop: 10,
+    marginBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f2f2f2',
+    paddingBottom: 5,
+    padding:20,
+    width:"100%",
+    paddingLeft:30
   }
   
 })

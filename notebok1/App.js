@@ -18,12 +18,14 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import Profile from './screens/Profile';
 import DrawerContent from './screens/DrawerContent';
 import Networking from './screens/Networking';
+import Register from './screens/Register';
 
 const LoginStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 const NetworkingStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
+const RegisterStack = createStackNavigator();
 
 const DetailsStackScreen = ({navigation}) => (
   <DetailsStack.Navigator screenOptions={{
@@ -63,6 +65,12 @@ const NetworkingStackScreen = () => (
 </NetworkingStack.Navigator>
 );
 
+const RegisterStackScreen = () => (
+  <RegisterStack.Navigator>
+  <RegisterStack.Screen name = "Register" component={Register}/>
+</RegisterStack.Navigator>
+);
+
 const App= () => {
   
   return(
@@ -72,6 +80,7 @@ const App= () => {
     <Drawer.Screen name="Login" component={LoginStackScreen} />
     <Drawer.Screen name="Details" component={DetailsStackScreen} />
     <Drawer.Screen name="Profile" component={ProfileStackScreen} />
+    <Drawer.Screen name="Register" component={RegisterStackScreen} />
     <Drawer.Screen name="Networking" component={NetworkingStackScreen} />
     </Drawer.Navigator>
      </NavigationContainer> 

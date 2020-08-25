@@ -13,6 +13,9 @@ import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;  // <--- import
+// import com.facebook.FacebookSdk;
+
 
 public class MainApplication extends Application implements ReactApplication {
 
