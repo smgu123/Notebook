@@ -19,6 +19,9 @@ import Profile from './screens/Profile';
 import DrawerContent from './screens/DrawerContent';
 import Networking from './screens/Networking';
 import Register from './screens/Register';
+import ReduxPage from './Redux/counter/ReduxCounter';
+import { store } from './Redux/store/store';
+import { Provider } from 'react-redux'
 
 const LoginStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
@@ -26,6 +29,7 @@ const ProfileStack = createStackNavigator();
 const NetworkingStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const RegisterStack = createStackNavigator();
+const ReduxPageStack = createStackNavigator();
 
 const DetailsStackScreen = ({navigation}) => (
   <DetailsStack.Navigator screenOptions={{
@@ -71,10 +75,17 @@ const RegisterStackScreen = () => (
 </RegisterStack.Navigator>
 );
 
+const ReduxPageStackScreen = () => (
+  <ReduxPageStack.Navigator>
+  <ReduxPageStack.Screen name = "ReduxPage" component={ReduxPage}/>
+</ReduxPageStack.Navigator>
+);
+
 const App= () => {
   
   return(
-
+<>
+    <Provider store={store}>
    <NavigationContainer>
     <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
     <Drawer.Screen name="Login" component={LoginStackScreen} />
@@ -82,9 +93,12 @@ const App= () => {
     <Drawer.Screen name="Profile" component={ProfileStackScreen} />
     <Drawer.Screen name="Register" component={RegisterStackScreen} />
     <Drawer.Screen name="Networking" component={NetworkingStackScreen} />
+    <Drawer.Screen name="ReduxPage" component={ReduxPageStackScreen} />
     </Drawer.Navigator>
      </NavigationContainer> 
-  )
+     </Provider>
+     </>
+  );
 };
 
 export default App;
