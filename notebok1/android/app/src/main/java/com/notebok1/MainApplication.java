@@ -15,7 +15,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;  // <--- import
 import com.practice.ToastManager;
-
+// import com.reactnativejitsimeet.JitsiMeetPackage;  // <--- Add this line 
+import androidx.annotation.Nullable; 
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -33,13 +34,20 @@ public class MainApplication extends Application implements ReactApplication {
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
          packages.add(new ToastManager()); // <-- Add this line with your package name.
+          // new JitsiMeetPackage();
           return packages;
+
         }
 
         @Override
         protected String getJSMainModuleName() {
           return "index";
         }
+
+         @Override
+        protected @Nullable String getBundleAssetName() {
+        return "app.bundle";
+    }
       };
 
   @Override

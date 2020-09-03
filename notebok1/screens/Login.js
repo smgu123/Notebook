@@ -4,7 +4,8 @@ import {
   View,
   Text,
   Button,
- StyleSheet
+ StyleSheet,
+ Image
 } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import {
@@ -118,26 +119,32 @@ const[password,setpassword] =React.useState("");
 <Text  style={{width:160,borderBottomColor:"black",borderBottomWidth:1,marginTop:20}}></Text>
 </View>
    
-<TouchableOpacity onPress={signIn} style={styles.b1}>
-  <Text style={styles.fb}>
-      <Icon 
-                  name="logo-google" 
-                                    color="white"
-                                    size={30}
-                                    />   Login with Google
-  </Text>
+<TouchableOpacity onPress={signIn} style={styles.GooglePlusStyle}>
+  
+<Image
+           
+            source={{
+              uri:
+                'https://raw.githubusercontent.com/AboutReact/sampleresource/master/google-plus.png',
+            }}
+            style={styles.ImageIconStyle}
+          />
+                              <Text style={styles.TextStyle}>Login with Google </Text>
 </TouchableOpacity>
 
    {/* <View style={{flexDirection:'row'}}> */}
-      <TouchableOpacity style={styles.b1} onPress={onLoginFacebook}>
+      <TouchableOpacity style={styles.FacebookStyle} onPress={onLoginFacebook}>
       
-        <Text style={styles.fb} >
-        <Icon 
-               name="logo-facebook" 
-                                color="white"
-                                size={30}
-                                
-                                />  Login With Facebook</Text>
+        <Image
+            //We are showing the Image from online
+            source={{
+              uri:
+                'https://raw.githubusercontent.com/AboutReact/sampleresource/master/facebook.png',
+            }}
+            
+            style={styles.ImageIconStyle}
+          />
+                               <Text style={styles.TextStyle}>  Login With Facebook</Text>
       </TouchableOpacity>
       
 <Text onPress={()=>{navigation.navigate('Register')}} style={styles.reg}>Don't have an account?</Text>
@@ -202,11 +209,45 @@ const styles= StyleSheet.create({
     width:335,height: 60,
     borderRadius:8
   },
-  fb:{
-    color:'#fff',
-    fontSize:20 ,
-    padding:20
-    
+  GooglePlusStyle: {
+    flexDirection: 'row',
+    justifyContent:'center',
+    alignItems: 'center',
+    backgroundColor: '#8c8888',
+    borderWidth: 0.5,
+    borderColor: '#fff',
+    height: 60,
+    width: "100%",
+    alignSelf:'center',
+    borderRadius: 5,
+    margin: 5,
+  },
+  FacebookStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent:'center',
+    backgroundColor: '#8c8888',
+    borderWidth: 0.5,
+    borderColor: '#fff',
+    height: 60,
+    width: "100%",
+    alignSelf:'center',
+    borderRadius: 5,
+    margin: 5,
+  },
+  ImageIconStyle: {
+    padding: 10,
+    margin: 5,
+    height: 25,
+    width: 25,
+    resizeMode: 'stretch',
+  },
+  TextStyle: {
+    color: '#fff',
+    // marginBottom: 4,
+    marginRight: 20,
+    fontSize:18,
+    marginLeft:10
   },
   reg:{
     color:'#77797a',

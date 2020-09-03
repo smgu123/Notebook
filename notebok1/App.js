@@ -21,7 +21,9 @@ import Networking from './screens/Networking';
 import Register from './screens/Register';
 import ReduxPage from './Redux/counter/ReduxCounter';
 import { store } from './Redux/store/store';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
+import JitsiMeet from './screens/JitsiMeet';
+
 
 const LoginStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
@@ -30,6 +32,7 @@ const NetworkingStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const RegisterStack = createStackNavigator();
 const ReduxPageStack = createStackNavigator();
+const JitsiMeetStack = createStackNavigator();
 
 const DetailsStackScreen = ({navigation}) => (
   <DetailsStack.Navigator screenOptions={{
@@ -81,10 +84,17 @@ const ReduxPageStackScreen = () => (
 </ReduxPageStack.Navigator>
 );
 
+const JitsiMeetStackScreen = () => (
+  <JitsiMeetStack.Navigator>
+  <JitsiMeetStack.Screen name = "JitsiMeet" component={JitsiMeet}/>
+</JitsiMeetStack.Navigator>
+);
+
 const App= () => {
   
   return(
 <>
+
     <Provider store={store}>
    <NavigationContainer>
     <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
@@ -94,6 +104,7 @@ const App= () => {
     <Drawer.Screen name="Register" component={RegisterStackScreen} />
     <Drawer.Screen name="Networking" component={NetworkingStackScreen} />
     <Drawer.Screen name="ReduxPage" component={ReduxPageStackScreen} />
+    <Drawer.Screen name="JitsiMeet" component={JitsiMeetStackScreen} />
     </Drawer.Navigator>
      </NavigationContainer> 
      </Provider>

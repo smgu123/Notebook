@@ -86,6 +86,18 @@ export default function DrawerContent(props) {
                             label="ReduxPage"
                             onPress={() => {props.navigation.navigate('ReduxPage')}}
                         />
+
+                        <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="globe-outline" 
+                                color={color}
+                                size={size}
+                                />
+                            )}
+                            label="JitsiMeet"
+                            onPress={() => {props.navigation.navigate('JitsiMeet')}}
+                        />
                      
                     </Drawer.Section>
             </View>

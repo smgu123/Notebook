@@ -45,7 +45,7 @@ var width = Dimensions.get('window').width;
         <View style={{flex:1,backgroundColor:'#59cbbd'}} >
         <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
             <TouchableOpacity onPress = {() => this.choosePhotoFromLibrary()}
-            style={{height:150,width:150,borderRadius:200,backgroundColor:'#36485f'}}>
+            style={{height:150,width:150,borderRadius:200,backgroundColor:'#36485f',marginTop:40}}>
 
                 {this.state.image != '' &&
                  (
@@ -58,7 +58,6 @@ var width = Dimensions.get('window').width;
             <View style={styles.action}>
           <FontAwesome name="user-o" size={20} />
           <TextInput
-          underlineColorAndroid={'transparent'}
             placeholder="Name"
             placeholderTextColor="#666666"
             autoCorrect={false}
@@ -67,7 +66,7 @@ var width = Dimensions.get('window').width;
           />
         </View>
         <View style={styles.picker}>
-            <Text >
+            
             <Picker selectedValue={this.state.selectedLabel}
               style={{height: 100, width: "100%"}}
              onValueChange={(itemValue, itemIndex) =>
@@ -77,7 +76,7 @@ var width = Dimensions.get('window').width;
               <Picker.Item label = "Male" value="male"></Picker.Item>
               <Picker.Item label = "Female" value="female"></Picker.Item>
             </Picker> 
-            </Text>
+           
             </View>         
 
              <View style={styles.action}>
@@ -106,13 +105,11 @@ var width = Dimensions.get('window').width;
   action: {
     flexDirection: 'row',
     marginTop: 10,
-    marginBottom: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#f2f2f2',
-    paddingBottom: 5,
-    padding:20,
-    width:width,
-    paddingLeft:30
+    borderBottomColor: 'black',
+    paddingBottom: 2,
+    padding:10,
+    width:"70%",
   },
 
   textInput: {
@@ -121,22 +118,16 @@ var width = Dimensions.get('window').width;
     paddingLeft: 20,
     color: '#05375a',
   },
-  text1: {
-    fontSize:25,
-    color:'black',
-    alignSelf:'stretch',
-    height:40,
-    marginBottom:30,
-    borderBottomColor:'black',
-    borderBottomWidth:1,
-  },
+  
   button:{
     padding:20,
     backgroundColor:'#36485f',
     marginTop:30,
+    marginBottom:40,
     justifyContent:'center',
     alignItems:'center',
-    borderRadius:20
+    borderRadius:20,
+    width:'40%'
   },
   btn:{
     color:'#fff',
@@ -145,14 +136,10 @@ var width = Dimensions.get('window').width;
   
   },
   picker:{
-    marginTop: 10,
-    marginBottom: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#f2f2f2',
-    paddingBottom: 5,
-    padding:20,
-    width:"100%",
-    paddingLeft:30
+    borderBottomColor: 'black',
+    width:"70%",
+    marginBottom:30
   }
   
 })

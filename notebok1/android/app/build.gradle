@@ -79,7 +79,9 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    enableHermes: false,  // clean and rebuild if changing
+    enableHermes: false,        // clean and rebuild if changing
+    entryFile: "index.js",
+    bundleAssetName: "app.bundle", 
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -183,7 +185,19 @@ android {
     }
 }
 
+// packagingOptions {
+//       pickFirst 'lib/x86/libc++_shared.so'
+//       pickFirst 'lib/x86/libjsc.so'
+//       pickFirst 'lib/x86_64/libjsc.so'
+//       pickFirst 'lib/arm64-v8a/libjsc.so'
+//       pickFirst 'lib/arm64-v8a/libc++_shared.so'
+//       pickFirst 'lib/x86_64/libc++_shared.so'
+//       pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+//       pickFirst 'lib/armeabi-v7a/libjsc.so'
+//   }
+
 dependencies {
+    implementation(project(':react-native-jitsi-meet'))
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
