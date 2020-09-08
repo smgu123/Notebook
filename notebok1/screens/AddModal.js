@@ -8,12 +8,47 @@ import Modal from 'react-native-modalbox';
 import { TextInput } from 'react-native-gesture-handler';
 import FlatListData from './FlatListData';
 import DatePicker from 'react-native-date-picker'
+import PushNotification from "react-native-push-notification";
 
 var screen = Dimensions.get('window');
 
 export default class AddModal extends React.Component{
     constructor(props){
         super(props);
+
+        PushNotification.configure({
+
+            onRegister: function (token) {
+              console.log("TOKEN:", token);
+            },
+           
+            onNotification: function (notification) {
+              console.log("NOTIFICATION:", notification);
+                  
+            },
+           
+            onAction: function (notification) {
+              console.log("ACTION:", notification.action);
+              console.log("NOTIFICATION:", notification);
+           
+            },
+           
+            onRegistrationError: function(err) {
+              console.error(err.message, err);
+            },
+           
+            permissions: {
+              alert: true,
+              badge: true,
+              sound: true,
+            },
+           
+            popInitialNotification: true,
+           
+            requestPermissions: true,
+          });   
+
+        
         this.state={
             newBookname:'',
             newDescription:'',
@@ -27,6 +62,14 @@ export default class AddModal extends React.Component{
     }
     generateKey = (numberOfCharacters)=>{
         return require('random-string')({length:numberOfCharacters});
+    }
+
+    Notification = () =>{
+        PushNotification.localNotification({
+            title: "Notification" , // (optional)
+            message: "Add New Details", // (required)
+            
+          });
     }
 
     render(){
@@ -75,11 +118,11 @@ export default class AddModal extends React.Component{
                             //  console.log(this.props.name);
                             //  console.log(this.props.item);
                             this.refs.myModal.close();
+                            this.Notification();
                          }} >       
           
                 <Text style={{color:'#fff',fontWeight:'bold',fontSize:20}}>ADD NEW DETAILS</Text>
                 </TouchableOpacity>
-
                    
                  <TextInput style={{height:40,
                 borderBottomColor:'gray',

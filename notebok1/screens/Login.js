@@ -220,7 +220,7 @@ const styles= StyleSheet.create({
     width: "100%",
     alignSelf:'center',
     borderRadius: 5,
-    margin: 5,
+    margin: 15,
   },
   FacebookStyle: {
     flexDirection: 'row',

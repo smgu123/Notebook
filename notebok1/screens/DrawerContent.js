@@ -78,7 +78,7 @@ export default function DrawerContent(props) {
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
-                                name="globe-outline" 
+                                name="reader" 
                                 color={color}
                                 size={size}
                                 />
@@ -90,7 +90,7 @@ export default function DrawerContent(props) {
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
-                                name="globe-outline" 
+                                name="videocam" 
                                 color={color}
                                 size={size}
                                 />
