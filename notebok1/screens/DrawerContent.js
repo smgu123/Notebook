@@ -98,6 +98,17 @@ export default function DrawerContent(props) {
                             label="JitsiMeet"
                             onPress={() => {props.navigation.navigate('JitsiMeet')}}
                         />
+                         <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="download-outline" 
+                                color={color}
+                                size={size}
+                                />
+                            )}
+                            label="Docpicker"
+                            onPress={() => {props.navigation.navigate('Docpicker')}}
+                        />
                      
                     </Drawer.Section>
             </View>

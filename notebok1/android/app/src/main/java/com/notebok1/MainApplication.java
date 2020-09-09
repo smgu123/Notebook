@@ -17,6 +17,9 @@ import co.apptailor.googlesignin.RNGoogleSigninPackage;  // <--- import
 import com.practice.ToastManager;
 // import com.reactnativejitsimeet.JitsiMeetPackage;  // <--- Add this line 
 import androidx.annotation.Nullable; 
+import com.rnfs.RNFSPackage; // <------- add package 
+import com.vinzscam.reactnativefileviewer.RNFileViewerPackage;
+import com.rumax.reactnative.pdfviewer.PDFViewPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -34,7 +37,8 @@ public class MainApplication extends Application implements ReactApplication {
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
          packages.add(new ToastManager()); // <-- Add this line with your package name.
-          // new JitsiMeetPackage();
+        //   new MainReactPackage(), // <---- add comma 
+        // new RNFSPackage(); // <---------- add package
           return packages;
 
         }

@@ -1,6 +1,7 @@
 package com.notebok1;
 
 import com.facebook.react.ReactActivity;
+import com.rnfs.RNFSPackage; // <------- add package 
 
 public class MainActivity extends ReactActivity {
 
@@ -10,6 +11,8 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
+    // new MainReactPackage(); // <---- add comma 
+        new RNFSPackage(); // <---------- add package
     return "notebok1";
   }
 }

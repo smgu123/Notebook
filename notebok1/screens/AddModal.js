@@ -64,7 +64,7 @@ export default class AddModal extends React.Component{
         return require('random-string')({length:numberOfCharacters});
     }
 
-    Notification = () =>{
+    Notification(){
         PushNotification.localNotification({
             title: "Notification" , // (optional)
             message: "Add New Details", // (required)
