@@ -63,7 +63,6 @@ export default class Details extends React.Component {
   }
 
  refreshFlatList = (activeKey)=>{ 
-
    this.setState((prevState) =>{
       return{
         deletedRowKey:activeKey
@@ -80,7 +79,7 @@ export default class Details extends React.Component {
     return (
       <View style={styles.container}>
          <View style={{flexDirection:'row',justifyContent:'center',justifyContent:'center'}} >
-        <TouchableHighlight style={{marginRight:10}}underlayColor='tomato' onPress={()=>this.onPressAdd()}>
+        <TouchableHighlight style={{marginRight:10}}underlayColor='tomato' onPress={this.onPressAdd}>
         <Icon 
                name="add-circle-outline" 
                                 color="black"
@@ -90,11 +89,10 @@ export default class Details extends React.Component {
       </View>
   
       <FlatList
-                ref={"flatlist"}
+  
                 data={FlatListData}
-                parentFlatList={this}
                 renderItem={({item})=>{
-                    return(<Flatimages item={item} parentFlatList={this}></Flatimages>);
+                    return(<Flatimages item={item} ></Flatimages>);
 
                 }}></FlatList>
                 <AddModal ref = {'addModal'} parentFlatList={this}></AddModal>

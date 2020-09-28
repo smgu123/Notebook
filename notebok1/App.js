@@ -34,16 +34,19 @@ const ReduxPageStack = createStackNavigator();
 const JitsiMeetStack = createStackNavigator();
 const DocpickerStack = createStackNavigator();
 
-const DetailsStackScreen = ({navigation}) => (
-  <DetailsStack.Navigator screenOptions={{
-    headerStyle : {backgroundColor:"#009387",
+
+
+const screenOptionStyle = {
+  headerStyle : {backgroundColor:"#009387",
   },
-  headertTintcolor:'#fff',
+  headerTintColor: '#fff',
   headerTitleStyle: {
-    color:'white',
     fontSize:25
   }
-   }}>
+};
+
+const DetailsStackScreen = ({navigation}) => (
+  <DetailsStack.Navigator screenOptions={screenOptionStyle}>
     <DetailsStack.Screen name="Notes" component={Details} 
     options={{title:'Notes',headerLeft:() => (
       <Icons.Button name="ios-menu" size={35} backgroundColor="#009387" 
@@ -61,14 +64,16 @@ const LoginStackScreen = () => (
 
 
 const ProfileStackScreen = () => (
- <ProfileStack.Navigator>
+ <ProfileStack.Navigator screenOptions={{
+  headerShown: false
+}}>
    <ProfileStack.Screen name = "Profile" component={Profile}/>
  </ProfileStack.Navigator>
 );
 
 const NetworkingStackScreen = () => (
   <NetworkingStack.Navigator>
-  <NetworkingStack.Screen name = "Networking" component={Networking}/>
+    <NetworkingStack.Screen name = "Networking" component={Networking}/>
 </NetworkingStack.Navigator>
 );
 
@@ -78,9 +83,12 @@ const RegisterStackScreen = () => (
 </RegisterStack.Navigator>
 );
 
-const ReduxPageStackScreen = () => (
+const ReduxPageStackScreen = ({navigation}) => (
   <ReduxPageStack.Navigator>
-  <ReduxPageStack.Screen name = "ReduxPage" component={ReduxPage}/>
+  <ReduxPageStack.Screen name = "ReduxPage" component={ReduxPage}
+   options={{title:'Redux',headerLeft:() => (
+    <Icons.Button name="arrow-back" size={30}  
+    onPress={() => navigation.navigate('Details')}></Icons.Button>)}}/>
 </ReduxPageStack.Navigator>
 );
 
@@ -92,21 +100,21 @@ const JitsiMeetStackScreen = () => (
 
 const DocpickerStackScreen = () => (
   <DocpickerStack.Navigator>
-  <DocpickerStack.Screen name = "Docpicker" component={Docpicker}/>
+    <DocpickerStack.Screen name = "Docpicker" component={Docpicker}/>
 </DocpickerStack.Navigator>
 );
 
-const App= () => {
+const App = () => {
   
   return(
 <>
     <Provider store={store}>
    <NavigationContainer>
     <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
-    <Drawer.Screen name="Login" component={LoginStackScreen} />
+    <Drawer.Screen name="Login" component={Login} options={{gestureEnabled: false}}/>
     <Drawer.Screen name="Details" component={DetailsStackScreen} />
-    <Drawer.Screen name="Profile" component={ProfileStackScreen} />
-    <Drawer.Screen name="Register" component={RegisterStackScreen} />
+    <Drawer.Screen name="Profile" component={Profile} options={{gestureEnabled: false}}/>
+    <Drawer.Screen name="Register" component={RegisterStackScreen} options={{gestureEnabled: false}} />
     <Drawer.Screen name="Networking" component={NetworkingStackScreen} />
     <Drawer.Screen name="ReduxPage" component={ReduxPageStackScreen} />
     <Drawer.Screen name="JitsiMeet" component={JitsiMeetStackScreen} />

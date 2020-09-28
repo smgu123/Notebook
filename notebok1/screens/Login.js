@@ -25,10 +25,8 @@ const ScreenContainer = ({ children }) => (
   <View style={styles.container}>{children}</View>
 );
 
-
-
 const Login=({navigation})=> {
-
+  
 const[userName,setname] =React.useState("");
 const[password,setpassword] =React.useState("");
   
@@ -144,14 +142,16 @@ const[password,setpassword] =React.useState("");
             
             style={styles.ImageIconStyle}
           />
-                               <Text style={styles.TextStyle}>  Login With Facebook</Text>
+<Text style={styles.TextStyle}>  Login With Facebook </Text>
       </TouchableOpacity>
       
 <Text onPress={()=>{navigation.navigate('Register')}} style={styles.reg}>Don't have an account?</Text>
+{/* <Text onPress={()=>{navigation.navigate('Register')}} style={[styles.reg,{color:'red'}]}>Don't have an account?</Text> */}
  </View></View></ScreenContainer>
   );
   
 }
+
 
 const styles= StyleSheet.create({
   container:{

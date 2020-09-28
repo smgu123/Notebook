@@ -86,13 +86,7 @@ export default class AddModal extends React.Component{
             onClosed={() =>{
                 alert("Modal closed");
             }}>
-                {/* <Text style={{fontSize:16,
-                fontWeight:'bold',
-                textAlign:'center',
-                marginTop:10,
-                fontSize:25
-                }}> Add New Data</Text> */}
-
+            
                     <TouchableOpacity style={{ 
                             padding:20,
                             backgroundColor:'#59cbbd',
@@ -114,9 +108,7 @@ export default class AddModal extends React.Component{
                                  date:this.state.date.toString()
                              };
                              FlatListData.push(newBook);
-                             this.props.parentFlatList.refreshFlatList(newKey);
-                            //  console.log(this.props.name);
-                            //  console.log(this.props.item);
+                            this.props.parentFlatList.refreshFlatList();
                             this.refs.myModal.close();
                             this.Notification();
                          }} >       

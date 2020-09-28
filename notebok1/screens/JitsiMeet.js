@@ -14,7 +14,7 @@ function App() {
       JitsiMeet.call(url, userInfo);
       /* Você também pode usar o JitsiMeet.audioCall (url) para chamadas apenas de áudio */
       /* Você pode terminar programaticamente a chamada com JitsiMeet.endCall () */
-    }, 1000);
+    }, );
   }, [])
 
   useEffect(() => {

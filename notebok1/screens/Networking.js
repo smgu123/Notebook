@@ -71,7 +71,7 @@ export default class App extends Component {
 
     this.state = {
       data: [],
-      isLoading: true
+      // isLoading: true
     };
   }
 
@@ -89,11 +89,11 @@ export default class App extends Component {
   async componentDidMount() {
     try{
     const response = await axios.get("https://reactnative.dev/movies.json")
-    console.log(response.data)
+    // console.log(response)
   
         this.setState({ data: response.data.movies });
    
-        this.setState({ isLoading: false });
+        // this.setState({ isLoading: false });
       }
       catch(error){
         alert("api cannot fetched",error);
@@ -112,7 +112,7 @@ export default class App extends Component {
        
           <FlatList
             data={data}
-            keyExtractor={({ id }, index) => id}
+            keyExtractor={({ id }) => id}
             renderItem={({ item }) => (
               <Text style={{fontWeight:"bold",fontSize:20,color:"white"}}>{item.title}, {item.releaseYear}</Text>
             )}

@@ -12,17 +12,20 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import ImagePicker from 'react-native-image-crop-picker';
 import {Picker} from '@react-native-community/picker';
-import { Dimensions } from "react-native";
+import Native from "react-native";
 
-var width = Dimensions.get('window').width; 
+var width = Native.Dimensions.get('window').width; 
 
   class Profile extends React.Component {
-      constructor(props){
-          super(props)
+      constructor(){
+          super()
+          // console.log(props)
           this.state={
               image:"",
               selectedLabel:''
+
           }
+        
       }
 
       showPicker = (value) =>{
@@ -44,7 +47,7 @@ var width = Dimensions.get('window').width;
     return(
         <View style={{flex:1,backgroundColor:'#59cbbd'}} >
         <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-            <TouchableOpacity onPress = {() => this.choosePhotoFromLibrary()}
+            <TouchableOpacity onPress = {this.choosePhotoFromLibrary}
             style={{height:150,width:150,borderRadius:200,backgroundColor:'#36485f',marginTop:40}}>
 
                 {this.state.image != '' &&
@@ -73,7 +76,7 @@ var width = Dimensions.get('window').width;
               this.setState({selectedLabel: itemValue})}>
 
               <Picker.Item label = "Gender" value="gender" ></Picker.Item>
-              <Picker.Item label = "Male" value="male"></Picker.Item>
+              <Picker.Item label = "Male" value="male" ></Picker.Item>
               <Picker.Item label = "Female" value="female"></Picker.Item>
             </Picker> 
            
@@ -89,7 +92,8 @@ var width = Dimensions.get('window').width;
           />
         </View>
             <TouchableOpacity style={styles.button} 
-              onPress={()=>{this.props.navigation.navigate('Details')}}>
+              onPress={()=>{this.props.navigation.navigate('Details')}}
+              >
                <Text style={styles.btn}>Done</Text>
              </TouchableOpacity>
         </View>
